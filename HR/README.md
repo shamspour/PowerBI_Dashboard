@@ -1,5 +1,5 @@
 # HR Analytics Dashboard (Power BI)
-![overview](Images/overview.GIF)
+![Overview](Images/overview.gif)
 ## Introduction
 This HR Analytics Dashboard is designed for **HR managers and business leaders** who need a clear, data-driven view of their workforce.  
 
