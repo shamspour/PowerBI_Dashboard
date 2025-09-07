@@ -50,7 +50,6 @@ The report is organized into three pages, each with a distinct focus to guide HR
 ---
 
 ### **Page 1: Home – Workforce Overview**
-### Page 1: Home – Workforce Overview
 ![Page 1 – Home](Images/page1.PNG)
 
 This page serves as the **executive summary** of the organization’s workforce.  
