@@ -1,4 +1,6 @@
-# Super Bowl Advertising Strategy & Brand Benchmarking Analysis
+# Advertising Strategy & Brand Benchmarking Analysis
+
+*A Power BI case study of Super Bowl advertising from 2000–2021*
 
 This Power BI case study explores how major brands approached Super Bowl advertising from **2000 to 2021**, with a focus on **brand investment, creative strategy, and digital engagement**.
 
