@@ -36,11 +36,16 @@ Key analyses include estimated media cost by brand and year, Funny vs Serious cr
 
 ---
 
-### 3) HR Analytics Dashboard
+### 3) Workforce Retention & Attrition Analysis
 ![Overview](/HR/Images/overview.gif)
-Insights for HR managers and business leaders—from an executive workforce overview to department/role diagnostics and employee-level actions (promotion readiness, retrenchment risk, satisfaction, tenure, gender split).
 
-**Read more:** [HR/README.md](HR/README.md)
+People analytics case study analyzing **1,470 employee records** to compare attrition across job roles, departments, overtime status, job satisfaction, and tenure-related indicators.
+
+Key analyses include attrition and retention KPIs, job-role and department attrition rates, overtime and satisfaction comparisons, and a transparent rule-based promotion review flag.
+
+**Key insight:** Employees working overtime show an attrition rate of approximately **30.5%**, compared with **10.4%** among employees without overtime; Sales Representatives show the highest observed job-role attrition rate at **39.8%**.
+
+**Read more:** [Project Case Study](HR/README.md)
 
 **Live report:** https://app.powerbi.com/view?r=eyJrIjoiMDFiYzk4NTQtMmE2OC00NDQ2LWI5NjEtY2I2MTFiMzI2OGE5IiwidCI6ImRmODY3OWNkLWE4MGUtNDVkOC05OWFjLWM4M2VkN2ZmOTVhMCJ9
 
