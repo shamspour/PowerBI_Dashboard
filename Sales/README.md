@@ -1,116 +1,210 @@
-# Sales Report (Power BI)
-![Overview](Images/overview.gif)
+# Sales Performance & Profitability Analysis
 
-## Introduction
-This dashboard is built for **commercial leads and product managers** to monitor sales performance and act quickly.  
-It consolidates **sales performance**, **customer segments & geography**, and **time trends** into one interactive report—so stakeholders can compare like-for-like, spot opportunities/risks, and move from context to action.
+## Project Overview
 
-With this report, stakeholders can answer:
-- Which **drugs** and **customers** drive or drag **sales performance**?
-- How does the revenue mix vary by **country**, **buyer type**, **gender**, and **age group**?
-- What are the **time trends** (MoM/seasonality/weekly patterns) that should guide promotions and inventory?
+This Power BI project analyzes sales performance across products, customers, geographic markets, transaction types, and time periods.
 
-The dataset used in this analysis comes from a **drug sales dataset** (inspired by the YouTube tutorial [Power BI Sales Dashboard](https://www.youtube.com/watch?v=ovQ9czcvotk)).
+The objective is to understand what drives revenue and profitability, identify meaningful differences across sales segments, and examine how performance changes throughout the year.
 
----
+The analysis is based on **10,000 sales transactions from 2023**, covering **200 customers and 40 product IDs**.
 
-## Dashboard File
-- **Interactive report:**  [Open in Power BI Service](https://app.powerbi.com/view?r=eyJrIjoiMDNmMTZhOWItNTAwOC00ODE4LTljNjItODAyM2Y3NjA2MWJjIiwidCI6ImRmODY3OWNkLWE4MGUtNDVkOC05OWFjLWM4M2VkN2ZmOTVhMCJ9)
+![Dashboard Overview](Images/overview.gif)
 
-> For the best experience, open the report in full-screen on Power BI Service.
+### Interactive Dashboard
+
+[Open the report in Power BI Service](https://app.powerbi.com/view?r=eyJrIjoiMDNmMTZhOWItNTAwOC00ODE4LTljNjItODAyM2Y3NjA2MWJjIiwidCI6ImRmODY3OWNkLWE4MGUtNDVkOC05OWFjLWM4M2VkN2ZmOTVhMCJ9)
 
 ---
 
-## Tools & Skills Demonstrated
-- **Data modeling (Star schema):** FactSales + Date (marked as date table), clean relationships, dedicated Measure Table.
-- **Power Query (M) ETL:** Robust shaping, type discipline, reusable Calendar; clear, auditable steps.
-- **DAX for decision KPIs:** Time-intelligence, cohort/segmentation logic, dynamic Top/Bottom with adjustable N; blank-safe, context-aware patterns.
-- **Interactive UX:** Field Parameters (metric switch), Map↔Chart & Heatmap↔Chart toggles, global slicers; dynamic titles/captions.
+## Business Question
+
+**What drives revenue and profitability across products, transaction types, markets, and time?**
+
+The analysis focuses on three questions:
+
+- Which products and customers contribute most to revenue and profit?
+- How does performance differ across transaction types and geographic markets?
+- How does sales performance change across months, quarters, and weekdays?
 
 ---
 
-## Dashboard Overview
+## Dataset
 
+The project uses a pharmaceutical sales dataset containing transaction-level sales records together with customer and product information.
 
-This sales dashboard contains **3 pages**, designed to guide stakeholders from a quick performance snapshot to customer segmentation and finally time trends.
+After data-quality checks, the analytical dataset contains:
 
----
-### Page 1 — Performance (Top/Bottom)
-*(Best vs worst performers)*
+| Metric | Scope |
+|---|---:|
+| Transactions | 10,000 |
+| Customers | 200 |
+| Product IDs | 40 |
+| Units Sold | 151,713 |
+| Analysis Period | Jan–Dec 2023 |
 
-![Performance](Images/1.gif)
+The model combines:
 
-**Topics covered**
-- Executive KPIs: Units Sold, COGS, Revenue, Profit, Profit Margin — with current vs previous month comparison.
-- Dynamic ranking: Top/Bottom **products** and **customers** by the active metric (Revenue / Profit / Transactions / Units) with contribution share.
-- Context-aware summaries: dynamic titles/captions that state the active metric and N.
-
-**This page helps answer**
-- Who/what is driving or dragging **sales performance** this period?
-- How does the ranking change when you switch the metric (Revenue ↔ Profit ↔ Transactions ↔ Units)?
-- What portion of total performance is concentrated in the current **Top-N** vs **Bottom-N** cohort?
-
-**Insight**
-- Revenue is often **concentrated in a small Top-N** set → opportunity for protection (inventory/SLAs) and smart bundling for mid-tier items.  
-- **Rank shifts across metrics** (e.g., high Units but low Profit) reveal margin/price mix issues worth investigating.  
-- **Margin vs Revenue** can diverge due to discounting, product mix, or COGS—growth in sales doesn’t always translate to profitability.  
-- **Bottom-N** items carry risk (slow movers/low margin) and are candidates for price tests, targeted promos, or phase-out.
+- Sales transactions: customer, product, date, units sold, and transaction type
+- Customer attributes: country, age, and gender
+- Product attributes: product name, selling price, and production cost
+- Calendar attributes: month, quarter, and weekday
 
 ---
 
-### Page 2 — Customer (Segments & Geography)
-*(Customer profile & where revenue comes from)*
+## Data Preparation & Modeling
 
-![Customer](Images/2.gif)
+The data was prepared in **Power Query** and structured using a star-schema approach.
 
-**Topics covered**
-- Customer overview: **Total Customers** and **Average Revenue per Customer (ARPC)**.
-- Revenue by **Country** and **Buyer Type** (e.g., seller vs user) with comparative panels.
-- Demographic splits: **Gender** and **Age Group**.
-- Geographic callouts: highlight revenue share and pockets of growth.
+Key preparation and modeling steps included:
 
-**This page helps answer**
-- Which **countries** and **buyer types** lead revenue and deserve focus?
-- How do **gender/age** cohorts differ in behavior and basket size?
-- Where are the **geo pockets** for expansion vs retention plays?
-
-**Insight**
-- Revenue is typically **skewed toward a few countries** → prioritize local playbooks (pricing, promos, inventory) in those markets.
-- **Buyer Type** patterns often diverge (price sensitivity, basket composition) → run **segmented campaigns** and tailored offers.
-- **Gender/Age** splits signal content and channel preferences → **personalize creative** and cadence.
-- Emerging markets with **consistent ARPC** but lower penetration are prime targets for **growth sprints**.
+- validating transaction records and data completeness
+- checking duplicates and inconsistent records
+- standardizing data types and dates
+- creating a dedicated calendar table
+- establishing relationships between sales, customer, product, and date tables
+- creating reusable DAX measures for KPIs and time-based comparisons
 
 ---
 
-### Page 3 — Time Trend (MoM & Seasonality)
-*(Momentum, seasonality, and weekday patterns)*
+## Key Metrics
 
-![Time Trend](Images/3.gif)
+The report tracks:
 
-**Topics covered**
-- Monthly trajectory with **MoM deltas** to assess short-term momentum.
-- **Yearly / Quarterly** revenue trend for structural shifts.
-- **Weekday sales** profile and **top-selling drugs by day** (heatmap/chart view).
-- KPI context for **Transactions** (transaction count) and **Total Revenue**.
+**Revenue · Profit · COGS · Profit Margin · Units Sold · Transactions · Customers**
 
-**This page helps answer**
-- What is the month-over-month direction of sales, and how stable is the momentum?
-- Where do seasonal inflection points occur across quarters and years?
-- Which weekdays concentrate demand, and which products drive those spikes?
+Additional DAX logic supports:
 
-**Insight**
-- **MoM momentum ≠ long-term trend**: temporary dips/spikes need confirmation against the quarterly trajectory.  
-- Clear **seasonality** suggests aligning campaigns, pricing, and inventory buffers with peak windows.  
-- **Weekday concentration** enables precise timing for promos and staffing; top-by-day products reveal bundle and cross-sell candidates.  
-- Monitoring **transactions vs revenue** uncovers mix effects (ticket size vs volume) that impact margin planning.
+- Month-over-Month comparisons
+- dynamic Top-N and Bottom-N rankings
+- product and customer ranking
+- contribution-to-total analysis
+- switching between Revenue, Profit, Transactions, and Units
 
 ---
 
-## Conclusion
+## Analysis
 
-This report establishes a **three-step decision path**:  
-1) **Performance** pinpoints what to act on now (by metric, Top/Bottom, N).  
-2) **Customer** shows where to focus (segments & geographies).  
-3) **Time Trend** clarifies when patterns shift (MoM, seasonality, weekdays).
+### 1. Sales Performance & Profitability
 
-By combining **time intelligence**, **dynamic Top/Bottom ranking**, and **interactive field parameters**, the dashboard moves beyond static reporting into a **scenario tool**—helping teams align quickly, prioritize with confidence, and translate insight into action.
+This page evaluates product and customer performance across multiple commercial KPIs rather than relying on revenue alone.
+
+Dynamic Top-N and Bottom-N rankings allow products and customers to be compared by Revenue, Profit, Transactions, or Units Sold.
+
+![Sales Performance](Images/1.gif)
+
+### Key finding
+
+The Top 10 product IDs generate approximately **41% of total revenue**.
+
+**Doxycycline** is the highest-revenue product at approximately **$2.15M**, but represents only around **5.3% of total revenue**, indicating that sales are distributed across several products rather than dominated by a single product.
+
+---
+
+## 2. Customer & Market Segments
+
+This analysis compares transaction types, geographic markets, and customer characteristics.
+
+The strongest commercial difference appears between **Seller-type** and **User-type transactions**.
+
+![Customer and Market Segments](Images/2.gif)
+
+### Key findings
+
+- Seller-type transactions represent only **24.95% of transactions** but generate approximately **87.55% of total revenue**.
+- Seller transactions average approximately **53.3 units per transaction**, compared with **2.5 units** for User transactions.
+- Canada and Australia together account for approximately **65.7% of revenue**.
+- However, these markets also represent roughly two-thirds of the customer base, suggesting that geographic revenue concentration is largely associated with customer distribution rather than substantially higher revenue per customer.
+- The Top 10 customers generate only approximately **8.9% of total revenue**, indicating relatively low dependence on a small group of individual customers.
+
+---
+
+## 3. Sales Trends
+
+The final page examines monthly, quarterly, and weekday performance during 2023.
+
+![Sales Trends](Images/3.gif)
+
+### Key findings
+
+Monthly revenue shows noticeable short-term variation:
+
+- largest Month-over-Month increase: **September, approximately +23.3%**
+- largest Month-over-Month decrease: **February, approximately −22.4%**
+
+Quarterly revenue increases from approximately **$9.67M in Q1** to **$10.48M in Q4**, representing an increase of roughly **8.5%**.
+
+Because the validated dataset contains one full year, these patterns are interpreted as **monthly and quarterly performance variation rather than evidence of long-term seasonality**.
+
+---
+
+## Key Insights
+
+1. **Transaction type is a major revenue driver.**  
+   Seller-type transactions generate 87.55% of revenue while accounting for only 24.95% of transactions.
+
+2. **Revenue is distributed across multiple products.**  
+   The Top 10 products generate approximately 41% of revenue, while the leading product contributes only about 5.3%.
+
+3. **Geographic concentration should be interpreted carefully.**  
+   Canada and Australia dominate revenue largely because they also contain a large share of customers.
+
+4. **Individual-customer concentration is relatively low.**  
+   The Top 10 customers account for only around 8.9% of revenue.
+
+5. **Monthly volatility is greater than quarterly variation.**  
+   Individual months show sizeable changes, while quarterly performance remains comparatively stable.
+
+---
+
+## Tools & Technical Skills
+
+**Power BI**
+- interactive dashboard development
+- slicers and cross-filtering
+- dynamic ranking
+- field parameters
+- report navigation
+
+**Power Query**
+- data cleaning
+- data transformation
+- type validation
+- calendar preparation
+
+**DAX**
+- Revenue
+- Profit
+- COGS
+- Profit Margin
+- Month-over-Month comparison
+- Top/Bottom ranking
+- contribution analysis
+- context-aware calculations
+
+**Data Modeling**
+- star schema
+- fact and dimension tables
+- relationships
+- dedicated measure table
+
+---
+
+## Limitations
+
+This project is a portfolio case study rather than an analysis of a real pharmaceutical company.
+
+The validated dataset covers **one full year (2023)**. Monthly and quarterly patterns can therefore be analyzed, but the dataset is not sufficient to establish multi-year seasonality or long-term market trends.
+
+Customer demographic variables are used descriptively and should not be interpreted as evidence of preferences, motivations, or causal purchasing behavior.
+
+The analysis identifies patterns and associations in the available data and does not establish causal relationships.
+
+---
+
+## Data Source & Attribution
+
+The dataset was adapted from material associated with the YouTube tutorial **Power BI Sales Dashboard**.
+
+The original dataset served as the starting point for the project. The portfolio analysis, business framing, KPI interpretation, findings, and documentation were developed as part of this independent analytics case study.
+
+[Original Tutorial](https://www.youtube.com/watch?v=ovQ9czcvotk)
