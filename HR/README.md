@@ -1,105 +1,149 @@
-# HR Analytics Dashboard (Power BI)
+# Workforce Retention & Attrition Analysis
+
+*A Power BI case study analyzing workforce retention, employee attrition patterns, and promotion-review indicators.*
+
 ![Overview](Images/overview.gif)
-## Introduction
-This HR Analytics Dashboard is designed for **HR managers and business leaders** who need a clear, data-driven view of their workforce.  
 
-The main challenge they face is that information about employees—such as promotions, retrenchments, satisfaction levels, and demographics—is often scattered across different systems, making it difficult to identify risks and opportunities quickly.  
+## Project Overview
 
-This dashboard brings all those insights into one interactive platform, helping HR professionals answer critical questions like:  
-- Which employees are due for promotion, and in which departments?  
-- Where are retrenchment risks the highest?  
-- How is the workforce distributed by gender, service years, and job roles?  
-- Which employees require immediate action?  
+This project analyzes a workforce dataset of **1,470 employees** to understand where employee attrition is concentrated and how it differs across roles, departments, overtime status, job satisfaction, and tenure-related indicators.
 
-The dataset used in this analysis comes from an **HR employee dataset** (inspired by the YouTube tutorial [Power BI HR Dashboard](https://www.youtube.com/watch?v=0BKlUySopU4&list=PLwIcJx1aSL1SeTJgPbFgf1V-5CfsV4l1l)), containing details such as demographics, job roles, years of service, job satisfaction, and promotion/retention status.
+Rather than treating HR flags as predictions, the analysis separates **recorded outcomes** from **rule-based review indicators**. The `Attrition` field is used as the observed employee outcome, while the promotion-review flag is transparently defined using years since last promotion.
 
----
+## Business Question
+
+**Which workforce characteristics are associated with employee attrition, and where are the strongest differences across roles and working conditions?**
+
+Supporting questions include:
+- Which job roles and departments show the highest attrition rates?
+- How does attrition differ between employees with and without overtime?
+- How does job satisfaction relate to observed attrition?
+- Which employee records meet the defined rule for promotion review?
+
+## Dataset
+
+The analysis covers **1,470 employee records** with fields including:
+
+- Attrition
+- Department and Job Role
+- Overtime
+- Job Satisfaction
+- Job Level
+- Years at Company
+- Years in Current Role
+- Years Since Last Promotion
+- Demographic and employment attributes
+
+Employee names are linked through `EmployeeNumber` from a separate lookup table.
+
+## Key Metrics
+
+- **Total Employees:** 1,470
+- **Attrition Records:** 237
+- **Attrition Rate:** 16.1%
+- **Retained Employees:** 1,233
+- **Retention Rate:** 83.9%
+- **Promotion Review Flag:** 66 employees
+
+The promotion-review indicator is **rule-based**, defined as employees with **11 or more years since their last promotion**. It is a review flag, not a recommendation that an employee should be promoted.
+
+## Key Findings
+
+### Overtime is associated with substantially higher attrition
+
+Employees working overtime show an attrition rate of approximately **30.5%**, compared with **10.4%** among employees without overtime.
+
+This is a descriptive association in the dataset and should not be interpreted as evidence that overtime causes attrition.
+
+### Attrition varies substantially by job role
+
+The highest observed attrition rate appears among **Sales Representatives (39.8%)**, followed by **Laboratory Technicians (23.9%)** and **Human Resources roles (23.1%)**.
+
+This role-level view is more informative than raw attrition counts because job-role populations differ in size.
+
+### Sales shows the highest department-level attrition rate
+
+- **Sales:** 20.6%
+- **Human Resources:** 19.0%
+- **Research & Development:** 13.8%
+
+Although Research & Development contains more attrition records in absolute terms, its larger workforce results in a lower attrition rate than Sales.
+
+### Job satisfaction shows meaningful differences
+
+Employees with the lowest job satisfaction level show an attrition rate of approximately **22.8%**, while employees with the highest satisfaction level show approximately **11.3%**.
+
+The relationship is not perfectly linear across all satisfaction levels, so the analysis avoids claiming a direct causal effect.
+
+## Dashboard Structure
+
+### 1. Workforce Overview & Attrition
+
+![Page 1 – Workforce Overview](Images/page1.PNG)
+
+Executive-level workforce KPIs and workforce structure, including:
+
+- Total employees
+- Attrition and retention metrics
+- Promotion-review flag
+- Employee distribution by tenure group
+- Employee distribution by job level
+- Gender distribution
+
+### 2. Attrition Drivers & Workforce Segments
+
+![Page 2 – Attrition Drivers](Images/page2.PNG)
+
+Focused comparison of attrition rates across:
+
+- Job Role
+- Department
+- Overtime status
+- Job Satisfaction
+
+The page emphasizes **rates rather than raw counts** so that groups of different sizes can be compared more meaningfully.
+
+### 3. Employee Review & Attrition Records
+
+![Page 3 – Employee Review](Images/page3.PNG)
+
+Employee-level records for two separate purposes:
+
+- **Recorded Attrition:** employees with `Attrition = Yes`
+- **Promotion Review:** employees meeting the rule `YearsSinceLastPromotion >= 11`
+
+These tables support record review and transparency; they are not predictive models or automated HR decisions.
+
+## Data Preparation & Modeling
+
+The Power BI model uses employee-level HR data and an employee-name lookup linked through `EmployeeNumber`.
+
+The project demonstrates:
+
+- Power Query for data preparation and transformation
+- Relationship-based data modeling
+- DAX measures for attrition, retention, and review KPIs
+- Rate-based comparison across workforce segments
+- Employee-level filtering and drill-down
+- Multi-page dashboard design
+
+## Tools & Skills
+
+**Power BI · DAX · Power Query · Data Modeling · KPI Design · Data Validation · Workforce Analytics · Data Visualization**
+
+## Analytical Notes & Limitations
+
+- `Attrition` is treated as a **recorded outcome**, not a prediction of future employee behavior.
+- Relationships shown in the dashboard are descriptive associations and should not be interpreted as causal effects.
+- The promotion-review flag is based only on **11+ years since last promotion** and does not represent a complete promotion decision framework.
+- Employee-level outputs are intended for analytical review, not automated employment decisions.
+
 ## Dashboard File
-You can find the file for the dashboard here: [HR_Dashboard.pbix](https://app.powerbi.com/view?r=eyJrIjoiMDFiYzk4NTQtMmE2OC00NDQ2LWI5NjEtY2I2MTFiMzI2OGE5IiwidCI6ImRmODY3OWNkLWE4MGUtNDVkOC05OWFjLWM4M2VkN2ZmOTVhMCJ9)  
 
+**Live report:** https://app.powerbi.com/view?r=eyJrIjoiMDFiYzk4NTQtMmE2OC00NDQ2LWI5NjEtY2I2MTFiMzI2OGE5IiwidCI6ImRmODY3OWNkLWE4MGUtNDVkOC05OWFjLWM4M2VkN2ZmOTVhMCJ9
 
----
+## Source & Attribution
 
-## Tools & Skills Demonstrated
-This project highlights both the technical and analytical skills applied in building an HR-focused dashboard and put key Power BI features into practice. Here's what was mastered:
+The project originated from an HR Power BI practice dataset and tutorial structure. The analytical framing, KPI definitions, attrition-focused comparisons, validation of the promotion-review rule, and portfolio documentation were developed as an independent analytical case study.
 
-🎨 **Dashboard Design:** Crafted an intuitive and visually appealing multi-page layout tailored for HR insights.  
-
-⚙️ **Power Query (ETL):** Performed data cleaning, shaping, and transformation to prepare the employee dataset for analysis.  
-
-🔗 **Data Modeling:** Built an efficient data model following star schema principles to support department-level and employee-level analysis.  
-
-🧮 **DAX Fundamentals:** Created calculations and aggregations to derive HR-specific KPIs, such as:  
-- % Due for Promotion  
-- % On Service vs % Retrenched  
-- Employee Rating Distribution (High vs Low)  
-- Department-wise Promotion & Retrenchment Counts  
-
-📊 **Visualizations Utilized:**  
-- 📈 Core Charts: Column, Bar, and Donut charts for comparisons and trends  
-- 🔢 Cards: Highlighted key performance indicators at a glance  
-- 📋 Tables: Provided detailed, employee-level information  
-- 🎨 Chart Variety: Combined common and less common visuals for effective storytelling  
-- 🔘 Buttons: Enabled streamlined navigation between pages  
----
-
-## Dashboard Overview
-
-The report is organized into three pages, each with a distinct focus to guide HR managers from a high-level view toward actionable insights.
-
----
-
-### **Page 1: Home – Workforce Overview**
-![Page 1 – Home](Images/page1.PNG)
-
-This page serves as the **executive summary** of the organization’s workforce.  
-It provides a snapshot of the most important KPIs, enabling HR leaders to quickly understand the overall state of employees:  
-
-- **Key KPIs:** Total Employees (1,470), Gender Split (60% Male, 40% Female), % Due for Promotion (4.49%), % Retrenched (7.96%).  
-- **Demographics:** Distribution by Years of Service.  
-- **Mobility:** Distance-from-work segmentation (Very Close, Close, Very Far).  
-
-👉 This page answers the question: *“What is the overall structure and current state of our workforce?”*
-
----
-
-### **Page 2: Details – Department & Role Insights**
-![Page 2 – Details](Images/page2.PNG)
-
-The second page allows a **deeper breakdown** of the workforce by department and role.  
-It highlights variations in promotion readiness, retrenchment, and employee sentiment across different segments:  
-
-- **Promotions & Retrenchments:** Department-level breakdowns.  
-- **Satisfaction Levels:** High, Medium, and Low job satisfaction across roles.  
-- **Overtime Analysis:** Split of employees working overtime vs not.  
-- **Role-Based View:** Insights into specific functions such as Healthcare, HR, Technicians, and Managers.  
-- **Performance Ratings:** KPI rating distribution (84.63% High vs 15.37% Low).  
-
-👉 This page answers the question: *“Where in the organization do we see the highest risks and opportunities?”*
-
----
-
-### **Page 3: Action – Employee-Level View**
-![Page 3 – Action](Images/page3.PNG)
-
-The final page focuses on **actionable decisions at the individual level**.  
-HR managers can directly identify and track employees flagged for specific actions:  
-
-- **Due for Promotion:** Full list of employees identified as ready for advancement.  
-- **At Risk of Retrenchment:** Complete list of employees likely to leave or be retrenched.  
-
-👉 This page answers the question: *“Which specific employees require immediate HR attention?”*
- 
-
----
-
-## Conclusion
-The HR Analytics Dashboard goes beyond displaying numbers — it provides a **structured decision-making framework** for HR managers:  
-
-- The **Home page** gives a clear overview of the entire workforce.  
-- The **Details page** highlights department- and role-level differences.  
-- The **Action page** pinpoints individual employees who require immediate attention.  
-
-By moving from high-level KPIs to granular employee data, the dashboard ensures that HR decisions are not only data-driven but also timely and targeted.  
-
-Future extensions could include integrating real-time HR data sources, adding predictive analytics for attrition risk, or expanding the set of KPIs to cover training and performance development.
+Original tutorial reference: [Power BI HR Dashboard](https://www.youtube.com/watch?v=0BKlUySopU4&list=PLwIcJx1aSL1SeTJgPbFgf1V-5CfsV4l1l)
