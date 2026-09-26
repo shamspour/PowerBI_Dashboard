@@ -1,17 +1,21 @@
 # Power BI Portfolio
 
-A curated set of interactive dashboards built with **Power BI**, showcasing data modeling (star schema), DAX time-intelligence, and clean, decision-oriented UX.
+A curated set of interactive Power BI analytics projects showcasing data modeling, DAX, Power Query, and decision-oriented reporting.
 
 ---
 
 ## Projects
 
-### 1) Sales Report
+### 1) Sales Performance & Profitability Analysis
 ![Overview](Sales/Images/overview.gif)
-Three-page decision flow for commercial leads & product managers:  
-**Performance** (Top/Bottom with metric switch) → **Customer** (segments & geography) → **Time Trend** (MoM momentum, seasonality, weekday patterns). 
 
-**Read more:** [Sales/README.md](Sales/README.md) 
+Power BI case study analyzing **10,000 sales transactions** across products, customers, transaction types, markets, and time.
+
+Key analyses include product and customer performance, profitability, dynamic Top/Bottom ranking, market segmentation, and monthly sales trends.
+
+**Key insight:** Seller-type transactions generated approximately **87.5% of revenue while representing only 25% of transactions**.
+
+**Read more:** [Project Case Study](Sales/README.md)
 
 **Live report:** https://app.powerbi.com/view?r=eyJrIjoiMDNmMTZhOWItNTAwOC00ODE4LTljNjItODAyM2Y3NjA2MWJjIiwidCI6ImRmODY3OWNkLWE4MGUtNDVkOC05OWFjLWM4M2VkN2ZmOTVhMCJ9
 
@@ -19,7 +23,7 @@ Three-page decision flow for commercial leads & product managers:
 
 ### 2) Super Bowl Ads Dashboard
 ![Overview](Ads/Images/overview.gif)
-Marketing analytics across brands and years—compare **ad counts vs costs**, **TV reach vs YouTube engagement**, and **funny vs serious** creatives with bookmark toggles. 
+Marketing analytics across brands and years—compare **ad counts vs costs**, **TV reach vs YouTube engagement**, and **funny vs serious** creatives with bookmark toggles.
 
 **Read more:** [Ads/README.md](Ads/README.md)
 
@@ -27,7 +31,7 @@ Marketing analytics across brands and years—compare **ad counts vs costs**, **
 
 ---
 
-### 3)  HR Analytics Dashboard
+### 3) HR Analytics Dashboard
 ![Overview](/HR/Images/overview.gif)
 Insights for HR managers and business leaders—from an executive workforce overview to department/role diagnostics and employee-level actions (promotion readiness, retrenchment risk, satisfaction, tenure, gender split).
 
