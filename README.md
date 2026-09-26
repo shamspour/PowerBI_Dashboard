@@ -21,11 +21,16 @@ Key analyses include product and customer performance, profitability, dynamic To
 
 ---
 
-### 2) Super Bowl Ads Dashboard
+### 2) Advertising Strategy & Brand Benchmarking Analysis
 ![Overview](Ads/Images/overview.gif)
-Marketing analytics across brands and years—compare **ad counts vs costs**, **TV reach vs YouTube engagement**, and **funny vs serious** creatives with bookmark toggles.
 
-**Read more:** [Ads/README.md](Ads/README.md)
+Marketing analytics case study based on **249 Super Bowl commercials from 10 brands across 22 years (2000–2021)**, focusing on brand investment, creative strategy, and digital engagement.
+
+Key analyses include estimated media cost by brand and year, Funny vs Serious creative performance, Celebrity vs Non-Celebrity engagement, and outlier-aware YouTube performance analysis.
+
+**Key insight:** Funny ads showed higher typical YouTube views, while serious and celebrity ads showed stronger median like engagement; one 2012 Doritos ad accounted for nearly half of all YouTube views in the dataset.
+
+**Read more:** [Project Case Study](Ads/README.md)
 
 **Live report:** https://app.powerbi.com/view?r=eyJrIjoiZDcwZWU0YjQtZDNlZi00NDU2LWIwZTAtYTFiMTA5YjIwYzRmIiwidCI6ImRmODY3OWNkLWE4MGUtNDVkOC05OWFjLWM4M2VkN2ZmOTVhMCJ9
 
